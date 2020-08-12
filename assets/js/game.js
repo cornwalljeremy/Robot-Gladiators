@@ -1,10 +1,18 @@
-var playerName = window.prompt("What is your robots name?");
-console.log(playerName);
-console.log("This logs a string, good for leaving yourself a message");
-console.log(10 + 10);
-console.log("Our robots name is " + playerName);
+var playerName = window.prompt("What is your robot's name?");
+var playerHealth = 100;
+var playerAttack = 10;
 
-function fight() {
-    window.alert("The Fight Has Begun!");
-}
-// fight()
+// You can also log multiple values at once like this
+console.log(playerName, playerAttack, playerHealth);
+
+var enemyName = "Roborto";
+var enemyHealth = 50;
+var enemyAttack = 12;
+
+var fight = function() {
+  window.alert("Welcome to Robot Gladiators!");
+  console.log(enemyHealth = enemyHealth - playerAttack)
+  console.log()
+};
+
+fight ();
