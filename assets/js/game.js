@@ -9,7 +9,7 @@ var enemyHealth = 50;
 var enemyAttack = 12;
 
 
-var fight = function(enemyName) {
+var fight = function (enemyName) {
   while (playerHealth > 0 && enemyHealth > 0) {
     // ask user if they'd liked to fight or run
     var promptFight = window.prompt('Would you like FIGHT or SKIP this battle? Enter "FIGHT" or "SKIP" to choose.');
@@ -64,9 +64,27 @@ var fight = function(enemyName) {
     }
   }
 };
-for (var i = 0; i < enemyNames.length; i++) {
-  var pickedEnemyName = enemyNames[i];
-  enemyHealth = 50;
-// call fight function with enemy robot
-  fight(pickedEnemyName);
-}
+var startGame = function () {
+  for (var i = 0; i < enemyNames.length; i++) {
+    playerHealth = 100;
+    playerAttack = 10;
+    playerMoney = 10;
+
+    if (playerHealth > 0) {
+      window.alert("Welcome to Robot Gladiators! Round " + (i + 1));
+    } else {
+      window.alert("You Are A Loser! GAME OVER! ");
+    }
+    var pickedEnemyName = enemyNames[i];
+    //reset enemyHealth 
+    enemyHealth = 50;
+    // call fight function with enemy robot
+    fight(pickedEnemyName);
+  }
+  startGame();
+};
+var endGame = function() {
+  window.alert("Shit's Over! Let See how bad you did!");
+};
+
+startGame();
