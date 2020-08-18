@@ -81,10 +81,25 @@ var startGame = function () {
     // call fight function with enemy robot
     fight(pickedEnemyName);
   }
-  startGame();
+  endGame()
+
 };
 var endGame = function() {
-  window.alert("Shit's Over! Let See how bad you did!");
+  if (playerHealth > 0) {
+    window.alert("Don't hurt yourself patting yourself on the back cause you won! You now have a score of " + playerMoney + ".");
+  } else {
+    window.alert("Shit's Over! Let See how bad you did!");
+}
+// ask player if they'd like to play again
+var playAgainConfirm = window.confirm("Would you like to play again?");
+
+if (playAgainConfirm) {
+  // restart the game
+  startGame();
+} 
+else {
+  window.alert("Thank you for playing Robot Gladiators! Come back soon!");
+}
 };
 
 startGame();
