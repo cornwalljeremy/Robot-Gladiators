@@ -30,11 +30,17 @@ var fightOrSkip = function () {
 };
 
 var fight = function (enemy) {
+  var isPlayerTurn = true;
+
+  if (Math.random() > 0.5) {
+    isPlayerTurn = false;
+  }
   while (playerInfo.health > 0 && enemy.health > 0) {
     // ask user if they'd like to fight or skip using fightOrSkip function
-    if (fightOrSkip()) {
-      // if true, leave fight by breaking loop
-      break;
+    if (isPlayerTurn()) {
+      if (fightOrSkip())
+        // if true, leave fight by breaking loop
+        break;
     }
 
     // remove enemy's health by subtracting the amount set in the playerInfo.attack variable
@@ -59,11 +65,11 @@ var fight = function (enemy) {
 
     // award player money for winning
     playerInfo.money = playerInfo.money + 20;
-
+    // break;
     // leave while() loop since enemy is dead
     // break;
   } else {
-    window.alert(enemy.name + " still has " + enemy.health + " health left.");
+    // window.alert(enemy.name + " still has " + enemy.health + " health left.");
   }
 
   // remove players's health by subtracting the amount set in the enemy.attack variable
@@ -83,7 +89,7 @@ var fight = function (enemy) {
 
   // check player's health
   if (playerInfo.health <= 0) {
-    window.alert(playerInfo.name + " has died!");
+    window.alert(playerInfo.name + " they dead!!");
     // leave while() loop if player is dead
     // break;
   } else {
@@ -91,6 +97,7 @@ var fight = function (enemy) {
       playerInfo.name + " still has " + playerInfo.health + " health left."
     );
   }
+  isPlayerTurn = !isPlayerTurn;
 };
 
 var startGame = function () {
@@ -143,7 +150,7 @@ var shop = function () {
   );
   // use switch to carry out action
   // shopOptionPrompt = parseInt(shopOptionPrompt);
-  switch (shopOptionPrompt = parseInt(shopOptionPrompt)) {
+  switch ((shopOptionPrompt = parseInt(shopOptionPrompt))) {
     case 1:
       playerInfo.refillHealth();
       break;
