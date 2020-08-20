@@ -142,17 +142,15 @@ var shop = function () {
     "Do you want to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter one: 'REFILL', 'UPGRADE', or 'LEAVE' to make a choice."
   );
   // use switch to carry out action
-  switch (shopOptionPrompt) {
-    case "REFILL":
-    case "refill":
+  // shopOptionPrompt = parseInt(shopOptionPrompt);
+  switch (shopOptionPrompt = parseInt(shopOptionPrompt)) {
+    case 1:
       playerInfo.refillHealth();
       break;
-    case "UPGRADE":
-    case "upgrade":
+    case 2:
       playerInfo.upgradeAttack();
       break;
-    case "LEAVE": // new case
-    case "leave":
+    case 3:
       window.alert("Leaving the store.");
       break;
     default:
@@ -160,7 +158,6 @@ var shop = function () {
       shop();
       break;
   }
-
   // call shop() again to force player to pick a valid option
   // shop();
 
